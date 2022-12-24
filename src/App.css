@@ -22,3 +22,9 @@ a {
   grid-template-columns: 2fr 10fr;
   grid-gap: 3px;
 }
+
+.app-wrapper__content {
+  background-color: rgba(50, 56, 176, 0.929);
+  grid-area: content;
+  padding-left: 5px;
+}

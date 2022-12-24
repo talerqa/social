@@ -1,0 +1,33 @@
+.items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.names,
+.messages {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.name {
+  color: black;
+}
+
+.active {
+  color: yellow;
+}
+
+.link,
+.message {
+  font-size: 25px;
+}
+
+.link:not(:last-child),
+.message:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.message {
+  color: rgb(94, 255, 0);
+}

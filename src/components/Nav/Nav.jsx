@@ -1,23 +1,46 @@
-import React from 'react';
-import NavCss from "./Nav.module.css"
-
-
+import React from "react";
+import { NavLink } from "react-router-dom";
+import NavCss from "./Nav.module.css";
 
 const Nav = () => {
   return (
     <nav className={NavCss.nav}>
       <ul className={NavCss.list}>
         <li className={NavCss.item}>
-          <a  href="/profile" className={NavCss.link}>Profile</a>
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+            isActive ? NavCss.active : NavCss.link
+          }>
+            Profile
+          </NavLink>
         </li>
         <li className={NavCss.item}>
-          <a href="/dialogs" className={NavCss.link}>Message</a>
+          <NavLink
+            to="/dialogs"
+            className={({ isActive }) =>
+              isActive ? NavCss.active : NavCss.link
+            }>
+            Message
+          </NavLink>
         </li>
         <li className={NavCss.item}>
-          <a href="/new" className={NavCss.link}>News</a>
+          <NavLink
+            to="/new"
+            className={({ isActive }) =>
+              isActive ? NavCss.active : NavCss.link
+            }>
+            News
+          </NavLink>
         </li>
         <li className={NavCss.item}>
-          <a href="/music" className={NavCss.link}>Music</a>
+          <NavLink
+            to="/music"
+            className={({ isActive }) =>
+              isActive ? NavCss.active : NavCss.link
+            }>
+            Music
+          </NavLink>
         </li>
       </ul>
     </nav>
