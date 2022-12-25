@@ -11,7 +11,7 @@ import SignIn from "./components/Header/SignIn/SignIn";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -19,8 +19,19 @@ const App = () => {
         <Nav />
         <div className="app-wrapper__content">
           <Routes>
-            <Route path="/profile/*" element={<Profile />} />
-            <Route path="/dialogs/*" element={<Dialogs />} />
+            <Route
+              path="/profile/*"
+              element={<Profile posts={props.state.profilePage.postInfo} />}
+            />
+            <Route
+              path="/dialogs/*"
+              element={
+                <Dialogs
+                  dialogs={props.state.messagePage.dialogNames}
+                  messages={props.state.messagePage.messages}
+                />
+              }
+            />
             <Route path="/music/*" element={<Music />} />
             <Route path="/new/*" element={<New />} />
             <Route path="/home/*" element={<Home />} />
