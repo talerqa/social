@@ -31,3 +31,16 @@
 .message {
   color: rgb(94, 255, 0);
 }
+
+.writeMessage {
+  display: flex;
+  width: 300px;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.textarea {
+  display: block;
+}
+.button {
+  display: block;
+}
