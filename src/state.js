@@ -1,4 +1,7 @@
-import { rerenderEntireTree } from "./render";
+let rerenderEntireTree
+let score = {
+  
+}
 
 let state = {
   profilePage: {
@@ -7,7 +10,7 @@ let state = {
       { id: "2", message: "How old are you", like: "20" },
       { id: "3", message: "I'm great", like: "6" },
     ],
-    newPostText: '',
+    newPostText: "",
   },
   messagePage: {
     dialogNames: [
@@ -25,6 +28,8 @@ let state = {
   },
 };
 
+window.state = state;
+
 export let addPost = () => {
   let addPostInfo = {
     id: "4",
@@ -32,13 +37,17 @@ export let addPost = () => {
     like: "0",
   };
   state.profilePage.postInfo.push(addPostInfo);
-  state.profilePage.newPostText = '';
+  state.profilePage.newPostText = "";
   rerenderEntireTree(state);
 };
 
 export let updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
   rerenderEntireTree(state);
+};
+
+export const subscribe = (observe) => {
+  rerenderEntireTree = observe;
 };
 
 export default state;
