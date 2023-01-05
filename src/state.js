@@ -1,7 +1,24 @@
-let rerenderEntireTree
-let score = {
-  
-}
+let rerenderEntireTree;
+let store = {
+  _state: {},
+  addPost() {
+    let addPostInfo = {
+      id: "4",
+      message: state.profilePage.newPostText,
+      like: "0",
+    };
+    state.profilePage.postInfo.push(addPostInfo);
+    state.profilePage.newPostText = "";
+    rerenderEntireTree(state);
+  },
+  updateNewPostText(newText) {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+  },
+  subscribe(observe) {
+    rerenderEntireTree = observe;
+  },
+};
 
 let state = {
   profilePage: {
@@ -28,26 +45,27 @@ let state = {
   },
 };
 
-window.state = state;
+export default store;
 
-export let addPost = () => {
-  let addPostInfo = {
-    id: "4",
-    message: state.profilePage.newPostText,
-    like: "0",
-  };
-  state.profilePage.postInfo.push(addPostInfo);
-  state.profilePage.newPostText = "";
-  rerenderEntireTree(state);
-};
+window._store = store;
 
-export let updateNewPostText = (newText) => {
-  state.profilePage.newPostText = newText;
-  rerenderEntireTree(state);
-};
+// export let addPost = () => {
+//   let addPostInfo = {
+//     id: "4",
+//     message: state.profilePage.newPostText,
+//     like: "0",
+//   };
+//   state.profilePage.postInfo.push(addPostInfo);
+//   state.profilePage.newPostText = "";
+//   rerenderEntireTree(state);
+// };
 
-export const subscribe = (observe) => {
-  rerenderEntireTree = observe;
-};
+// export let updateNewPostText = (newText) => {
+//   state.profilePage.newPostText = newText;
+//   rerenderEntireTree(state);
+// };
 
-export default state;
+// export const subscribe = (observe) => {
+//   rerenderEntireTree = observe;
+// };
+
