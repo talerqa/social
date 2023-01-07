@@ -45,9 +45,9 @@ let store = {
   },
 
   dispatch(action) {
-    if (type.action === "ADD-POST") {
+    if (action.type === "ADD-POST") {
       this.addPost();
-    } else if (type.action === "UPDATE-NEW-POST-TEXT") {
+    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
       this.updateNewPostText(action.newText);
     }
   },
