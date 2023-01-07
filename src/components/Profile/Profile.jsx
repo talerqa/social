@@ -12,7 +12,7 @@ const Profile = (props) => {
           src="https://img.freepik.com/free-photo/tropical-beach_74190-188.jpg"></img>
       </div>
       <ProfileInfo />
-      <MyPost posts={props.posts} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>
+      <MyPost posts={props.posts} dispatch={props.dispatch} />
     </div>
   );
 };
