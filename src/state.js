@@ -1,4 +1,5 @@
-import { type } from "@testing-library/user-event/dist/type";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_POST = "ADD-POST";
 
 let rerenderEntireTree;
 let store = {
@@ -45,9 +46,9 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
       this.addPost();
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this.updateNewPostText(action.newText);
     }
   },
@@ -58,13 +59,12 @@ let store = {
 };
 
 export const addPostActionCreate = () => {
-  return { type: "ADD-POST" };
+  return { type: ADD_POST };
 };
 
 export const onPostChangeActionCreate = (text) => {
-  return { type: "UPDATE-NEW-POST-TEXT", newText: text };
+  return { type: UPDATE_NEW_POST_TEXT, newText: text };
 };
-
 
 export default store;
 
