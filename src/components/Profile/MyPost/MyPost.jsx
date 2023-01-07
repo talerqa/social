@@ -2,6 +2,7 @@ import MyPostCss from "./MyPost.module.css";
 import Post from "./Post/Post";
 import React from "react";
 import state from "../../../state";
+import { addPostActionCreate, onPostChangeActionCreate } from "../../../state";
 
 const MyPost = (props) => {
   let postInfos = props.posts.map((el) => (
@@ -12,12 +13,13 @@ const MyPost = (props) => {
 
   let addPost = () => {
     createElement.current.value = "";
-    props.dispatch({ type: "ADD-POST" });
+    props.dispatch(addPostActionCreate());
   };
 
   let onPostChange = () => {
     let text = createElement.current.value;
-    props.dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text });
+    let action = onPostChangeActionCreate(text);
+    props.dispatch(action);
   };
 
   return (
