@@ -1,27 +1,25 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import Message from "./Message/Message";
 import DialogName from "./DialogName/DialogName";
 import DialogsCss from "./Dialogs.module.css";
-import { updateNewMessageBodyCreate, sendMessageCreate } from "./../../state";
+import { updateNewMessageBodyCreate, sendMessageCreate, state } from "./../../state";
 
 const Dialogs = (props) => {
-  let dialogNamesElement = props.dialogs.map((d) => (
+  let state = props.store.getState().messagePage;
+
+  let dialogNamesElement = state.dialogNames.map((d) => (
     <DialogName name={d.name} id={d.id} />
   ));
-  let messagesElement = props.messages.map((m) => (
+  let messagesElement = state.messages.map((m) => (
     <Message message={m.message} />
   ));
+  let newMessageBody = state.newMessageBody
 
-  let newMessage = props.newMessage;
-
-  debugger;
-  const onMessageClick = () => {
-    props.store.dispatch(sendMessageCreate);
-    console.log(props);
+  let onSendMessageClick = () => {
+    props.store.dispatch(sendMessageCreate());
   };
 
-  const onMessageChange = (e) => {
+  let onMessageChange = (e) => {
     let body = e.target.value;
     props.store.dispatch(updateNewMessageBodyCreate(body));
   };
@@ -33,13 +31,18 @@ const Dialogs = (props) => {
         <div className={DialogsCss.messages}>{messagesElement}</div>
       </div>
       <div className={DialogsCss.writeMessage}>
-        <textarea
-          className={DialogsCss.textarea}
-          value={newMessage}
-          onChange={onMessageChange}></textarea>
-        <button className={DialogsCss.button} onClick={onMessageClick}>
-          Send a message
-        </button>
+        <div>
+          <textarea
+            placeholder="Enter text"
+            className={DialogsCss.textarea}
+            value={newMessageBody}
+            onChange={onMessageChange}></textarea>
+        </div>
+        <div>
+          <button className={DialogsCss.button} onClick={onSendMessageClick}>
+            Send a message
+          </button>
+        </div>
       </div>
     </div>
   );

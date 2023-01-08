@@ -30,13 +30,7 @@ const App = (props) => {
             />
             <Route
               path="/dialogs/*"
-              element={
-                <Dialogs
-                  dispatch={props.dispatch}
-                  dialogs={props.state.messagePage.dialogNames}
-                  messages={props.state.messagePage.messages}
-                />
-              }
+              element={<Dialogs store={props.store} />}
             />
             <Route path="/music/*" element={<Music />} />
             <Route path="/new/*" element={<New />} />
