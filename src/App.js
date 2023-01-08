@@ -24,7 +24,7 @@ const App = (props) => {
               element={
                 <Profile
                   posts={props.state.profilePage.postInfo}
-                  dispatch = {props.dispatch}
+                  dispatch={props.dispatch}
                 />
               }
             />
@@ -32,6 +32,7 @@ const App = (props) => {
               path="/dialogs/*"
               element={
                 <Dialogs
+                  dispatch={props.dispatch}
                   dialogs={props.state.messagePage.dialogNames}
                   messages={props.state.messagePage.messages}
                 />

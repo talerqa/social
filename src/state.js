@@ -1,5 +1,7 @@
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const ADD_POST = "ADD-POST";
+const SEND_MESSAGE = "SEND-MESSAGE";
+const UPDATE_NEW_MESSAGE = "UPDATE_NEW_MESSAGE";
 
 let rerenderEntireTree;
 let store = {
@@ -25,6 +27,7 @@ let store = {
         { message: "Lets go" },
         { message: "Fuck's it" },
       ],
+      newMessageBody: "",
     },
   },
   getState() {
@@ -44,12 +47,21 @@ let store = {
     this._state.profilePage.newPostText = newText;
     this._rerenderEntireTree(this._state);
   },
-
+  // updateNewMessageBody(action) {
+  //   /////////////
+  // },
+  // sendMessage(newMessage) {},
   dispatch(action) {
     if (action.type === ADD_POST) {
       this.addPost();
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this.updateNewPostText(action.newText);
+    } else if (action.type === SEND_MESSAGE) {
+      let body = this._state.messagePage.newMessageBody;
+      this._state.messagePage.newMessageBody = "";
+      this._state.messagePage.messages.push({ message: body });
+    } else if (action.type === UPDATE_NEW_MESSAGE) {
+      this._state.messagePage.newMessageBody = action.body;
     }
   },
 
@@ -64,6 +76,14 @@ export const addPostActionCreate = () => {
 
 export const onPostChangeActionCreate = (text) => {
   return { type: UPDATE_NEW_POST_TEXT, newText: text };
+};
+
+export const sendMessageCreate = () => {
+  return { type: SEND_MESSAGE };
+};
+
+export const updateNewMessageBodyCreate = (body) => {
+  return { type: UPDATE_NEW_MESSAGE, body: body };
 };
 
 export default store;
