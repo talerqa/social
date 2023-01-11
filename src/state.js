@@ -1,7 +1,5 @@
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_POST = "ADD-POST";
-const SEND_MESSAGE = "SEND-MESSAGE";
-const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY";
+import profileReducer from "./redux/profile-reducer";
+import dialogsReducer from "./redux/dialogs-reducer";
 
 let rerenderEntireTree;
 let store = {
@@ -52,36 +50,16 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      this.addPost();
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this.updateNewPostText(action.newText);
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.messagePage.newMessageBody = action.body;
-      this._rerenderEntireTree(this._state);
-    } else if (action.type === SEND_MESSAGE) {
-      let body = this._state.messagePage.newMessageBody;
-      this._state.messagePage.newMessageBody = "";
-      this._state.messagePage.messages.push({ id: 5, message: body });
-      this._rerenderEntireTree(this._state);
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.messagePage = dialogsReducer(this._state.messagePage, action);
+
+    this._rerenderEntireTree(this._state);
   },
 
   subscribe(observe) {
     this._rerenderEntireTree = observe;
   },
 };
-
-export const addPostActionCreate = () => ({ type: ADD_POST });
-export const onPostChangeActionCreate = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: text,
-});
-export const sendMessageCreate = () => ({ type: SEND_MESSAGE });
-export const updateNewMessageBodyCreate = (body) => ({
-  type: UPDATE_NEW_MESSAGE_BODY,
-  body: body,
-});
 
 export default store;
 
