@@ -64,23 +64,3 @@ let store = {
 export default store;
 
 window._store = store;
-
-// export let addPost = () => {
-//   let addPostInfo = {
-//     id: "4",
-//     message: state.profilePage.newPostText,
-//     like: "0",
-//   };
-//   state.profilePage.postInfo.push(addPostInfo);
-//   state.profilePage.newPostText = "";
-//   rerenderEntireTree(state);
-// };
-
-// export let updateNewPostText = (newText) => {
-//   state.profilePage.newPostText = newText;
-//   rerenderEntireTree(state);
-// };
-
-// export const subscribe = (observe) => {
-//   rerenderEntireTree = observe;
-// };

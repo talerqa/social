@@ -21,12 +21,7 @@ const App = (props) => {
           <Routes>
             <Route
               path="/profile/*"
-              element={
-                <Profile
-                  posts={props.state.profilePage.postInfo}
-                  dispatch={props.dispatch}
-                />
-              }
+              element={<Profile store={props.store} />}
             />
             <Route
               path="/dialogs/*"

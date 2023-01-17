@@ -1,7 +1,8 @@
 import React from "react";
-import MyPost from "./MyPost/MyPost";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ProfileCss from "./Profile.module.css";
+import MyPostContainer from "./MyPost/MyPostContainer";
+
 
 const Profile = (props) => {
   return (
@@ -12,7 +13,7 @@ const Profile = (props) => {
           src="https://img.freepik.com/free-photo/tropical-beach_74190-188.jpg"></img>
       </div>
       <ProfileInfo />
-      <MyPost posts={props.posts} dispatch={props.dispatch} />
+      <MyPostContainer store={props.store} />
     </div>
   );
 };
