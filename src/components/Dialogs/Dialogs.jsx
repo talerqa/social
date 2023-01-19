@@ -4,8 +4,7 @@ import DialogName from "./DialogName/DialogName";
 import DialogsCss from "./Dialogs.module.css";
 
 const Dialogs = (props) => {
-  debugger
-  
+ 
   let state = props.messagePage;
 
   let dialogNamesElement = state.dialogNames.map((d) => (
@@ -23,7 +22,7 @@ const Dialogs = (props) => {
   };
 
   let onMessageChange = (body) => {
-    props.updateNewMessageBodyCreate(body);
+    props.updateNewMessageBodyCreate(body.target.value);
   };
 
   return (
