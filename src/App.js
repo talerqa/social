@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import Profile from "./components/Profile/Profile";
-import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Music from "./components/Music/Music";
 import New from "./components/New/New";
 import Contacts from "./components/Header/Contacts/Contacts";
@@ -25,7 +25,7 @@ const App = (props) => {
             />
             <Route
               path="/dialogs/*"
-              element={<Dialogs store={props.store} />}
+              element={<DialogsContainer store={props.store} />}
             />
             <Route path="/music/*" element={<Music />} />
             <Route path="/new/*" element={<New />} />

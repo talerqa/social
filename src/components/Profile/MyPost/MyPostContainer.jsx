@@ -12,10 +12,12 @@ const MyPostContainer = (props) => {
     props.store.dispatch(addPostActionCreate());
   };
 
+  
   let onPostChange = (text) => {
     let action = onPostChangeActionCreate(text);
     props.store.dispatch(action);
   };
+  console.log(state.profilePage.newPostText);
 
   return (
     <MyPost
