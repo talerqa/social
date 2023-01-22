@@ -5,10 +5,10 @@ import {
 import MyPost from "./MyPost";
 import { connect } from "react-redux";
 
-const mapStateToProps = (store) => {
+const mapStateToProps = (state) => {
   return {
-    posts: store.profilePage.postInfo,
-    newPostText: store.profilePage.newPostText,
+    posts: state.profilePage.postInfo,
+    newPostText: state.profilePage.newPostText,
   };
 };
 
