@@ -8,6 +8,8 @@ import New from "./components/New/New";
 import Contacts from "./components/Header/Contacts/Contacts";
 import Home from "./components/Header/Home/Home";
 import SignIn from "./components/Header/SignIn/SignIn";
+import UsersContainer from "./components/Users/UsersContainer";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -21,6 +23,7 @@ const App = (props) => {
           <Routes>
             <Route path="/profile/*" element={<Profile />} />
             <Route path="/dialogs/*" element={<DialogsContainer />} />
+            <Route path="/users/*" element={<UsersContainer />} />
             <Route path="/music/*" element={<Music />} />
             <Route path="/new/*" element={<New />} />
             <Route path="/home/*" element={<Home />} />
