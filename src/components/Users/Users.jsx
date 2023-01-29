@@ -63,14 +63,14 @@ const Users = (props) => {
                   onClick={() => {
                     props.unfollow(user.id);
                   }}>
-                  unfollow
+                  UNFOLLOW
                 </button>
               ) : (
                 <button
                   onClick={() => {
                     props.follow(user.id);
                   }}>
-                  follow
+                  FOLLOW
                 </button>
               )}
             </div>
