@@ -3,54 +3,17 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 
 let initialState = {
-  users: [
-    {
-      userId: 1,
-      fullName: "Alyaksei T.",
-      status: "I'm fine",
-      location: {
-        city: "Minsk",
-        country: "Belarus",
-      },
-      follow: true,
-      image: "https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png",
-    },
-
-    {
-      userId: 2,
-      fullName: "Elena T.",
-      status: "I'm so good",
-      location: {
-        city: "Brest",
-        country: "Belarus",
-      },
-      follow: true,
-      image: "https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png",
-    },
-
-    {
-      userId: 3,
-      fullName: "Andrew A.",
-      status: "I'm tired",
-      location: {
-        city: "Kiev",
-        country: "Ukraine",
-      },
-      follow: false,
-      image: "https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png",
-    },
-  ],
+  users: []
 };
 
 const usersReducer = (state = initialState, action) => {
-  debugger;
   switch (action.type) {
     case FOLLOW: {
       return {
         ...state,
         users: state.users.map((user) => {
-          if (user.userId === action.userId) {
-            return {...user, follow: true};
+          if (user.id === action.userId) {
+            return {...user, followed: true};
           }
           return user;
         }),
@@ -61,8 +24,8 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map((user) => {
-          if (user.userId === action.userId) {
-            return {...user, follow: false};
+          if (user.id === action.userId) {
+            return {...user, followed: false};
           }
           return user;
         }),
