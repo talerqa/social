@@ -1,4 +1,13 @@
 .image {
   width: 200px;
   height: 200px;
-} 
+}
+
+.btnActive {
+  font-weight: 800;
+  color: red;
+}
+
+.btnNonActive {
+  color: #000;
+}

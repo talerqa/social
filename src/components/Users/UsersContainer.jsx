@@ -1,13 +1,12 @@
 import Users from "./UsersClass";
-import {
-  followActionCreate,
-  unfollowActionCreate,
-  setUserActionCreate,
-} from "../../redux/users-reducer";
-import { connect } from "react-redux";
+import {followActionCreate, unfollowActionCreate, setUserActionCreate} from "../../redux/users-reducer";
+import {connect} from "react-redux";
 const mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
+    pageSize: state.usersPage.pageSize,
+    totalUsersCount: state.usersPage.totalUsersCount,
+    currentCount: state.usersPage.currentCount,
   };
 };
 
