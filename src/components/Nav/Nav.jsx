@@ -42,6 +42,15 @@ const Nav = () => {
             Music
           </NavLink>
         </li>
+        <li className={NavCss.item}>
+          <NavLink
+            to="/users"
+            className={({ isActive }) =>
+              isActive ? NavCss.active : NavCss.link
+            }>
+            User
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
